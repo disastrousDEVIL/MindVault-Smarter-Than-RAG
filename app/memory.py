@@ -1,4 +1,7 @@
-from typing import List, Dict
+"""Cognee memory integration for fact storage and retrieval."""
+# pylint: disable=import-error
+
+from typing import Dict, List
 
 import cognee
 

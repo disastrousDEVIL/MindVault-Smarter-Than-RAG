@@ -1,4 +1,6 @@
-from typing import List, Dict
+"""Retrieve and prune facts for question answering."""
+
+from typing import Dict, List
 
 from app.memory import retrieve_facts
 
