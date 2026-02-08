@@ -1,5 +1,7 @@
 """OpenAI client wrapper for fact extraction and answer generation."""
 
+import json
+
 from openai import OpenAI
 from app.settings import settings
 
@@ -14,10 +16,10 @@ class LLMClient:
         self.client = OpenAI(api_key=settings.OPENAI_API_KEY)
         self.model = settings.OPENAI_MODEL
 
-    def extract_facts(self, prompt: str) -> dict:
+    def extract_facts(self, prompt: str) -> str:
         """
         Calls OpenAI to extract atomic facts.
-        Must return structured JSON.
+        Must return structured JSON as a string.
         """
         response = self.client.chat.completions.create(
             model=self.model,
@@ -58,7 +60,11 @@ class LLMClient:
             response_format={"type": "json_object"},
         )
 
-        return response.choices[0].message.content
+        content = response.choices[0].message.content
+        try:
+            return json.loads(content)
+        except json.JSONDecodeError:
+            return {"answer": content, "sources": []}
 
 
 llm_client = LLMClient()
