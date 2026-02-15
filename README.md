@@ -1,19 +1,6 @@
-# MindVault 🧠
+# # MindVault 🧠
 
-A Knowledge-Graph Memory Layer for LLMs
-
-MindVault is a backend service that converts documents into a structured knowledge graph and allows Large Language Models (LLMs) to answer questions using only stored knowledge. This project focuses on memory correctness, traceability, and structure, not chat history or vector-only retrieval.
-
----
-
-## 🧠 What MindVault Is
-
-- A memory service, not a chatbot
-- Stores knowledge as atomic facts
-- Uses a knowledge graph, not raw text chunks
-- Answers are grounded strictly in stored memory
-- Supports multiple documents with shared entities
-- Provides graph visualization for inspection
+A backend service that converts documents into a knowledge graph so LLMs answer questions using only stored, traceable facts — no chat history, no vector-only retrieval, no hallucinations.
 
 ---
 
@@ -28,6 +15,23 @@ Instead of retrieving text chunks and hoping the model reasons correctly, MindVa
 5. Uses an LLM only to compose answers from memory
 
 If a fact is not stored, it cannot appear in the answer.
+
+---
+
+## 🌟 Why This Project Matters
+
+Most RAG systems:
+- Retrieve text chunks
+- Depend on probabilistic reasoning
+- Hallucinate silently
+
+MindVault:
+- Stores knowledge, not text
+- Makes memory inspectable
+- Guarantees answer grounding
+- Scales across documents naturally
+
+This is how LLM memory should actually be built.
 
 ---
 
@@ -83,16 +87,6 @@ Each fact stores:
 - LLM: OpenAI API
 - Memory Engine: Cognee
 - Visualization: Cognee graph visualizer (HTML)
-
----
-
-## ✅ Prerequisites
-
-- Python 3.11
-- OpenAI API key
-- pip and virtualenv
-
-⚠️ Python 3.12+ is not recommended due to dependency constraints.
 
 ---
 
@@ -232,23 +226,6 @@ MindVault/
 ├── README.md
 └── requirements.txt
 ```
-
----
-
-## 🌟 Why This Project Matters
-
-Most RAG systems:
-- Retrieve text chunks
-- Depend on probabilistic reasoning
-- Hallucinate silently
-
-MindVault:
-- Stores knowledge, not text
-- Makes memory inspectable
-- Guarantees answer grounding
-- Scales across documents naturally
-
-This is how LLM memory should actually be built.
 
 ---
 
