@@ -49,6 +49,10 @@ LLM (answer generation)
 
 LLMs never bypass memory.
 
+Example knowledge graph output:
+
+![MindVault Knowledge Graph Example](media/mindvault-knowledge-graph-sample.jpeg)
+
 ---
 
 ## 🧠 Memory Model
@@ -111,12 +115,11 @@ pip install -r requirements.txt
 Create a `.env` file in the project root:
 
 ```
-OPENAI_API_KEY=sk-your-openai-key
-OPENAI_MODEL=gpt-4.1-mini
+LLM_API_KEY=sk-your-openai-key
 DEBUG=false
 ```
 
-OPENAI_MODEL defaults to gpt-4.1-mini if not set.
+`OPENAI_API_KEY` is also accepted for backward compatibility.
 
 ---
 
@@ -210,29 +213,6 @@ Open the file in a browser to inspect memory.
 
 ---
 
-## ✅ Expected Behavior
-
-### Correct Answers
-
-- Answers combine facts from multiple documents
-- Sources are always listed
-- No hallucinations
-
-### Failure Case
-
-If memory lacks information:
-
-```json
-{
-  "answer": "Not enough information in memory to answer this question.",
-  "sources": []
-}
-```
-
-This is a successful outcome, not an error.
-
----
-
 ## 🧾 Folder Structure
 
 ```
@@ -287,4 +267,13 @@ This is how LLM memory should actually be built.
 This project is licensed under the MIT License.
 
 You are free to use, modify, and distribute this software with attribution. See the LICENSE file for full details.
+
+---
+
+## 👤 Author
+
+- Krish Batra
+- Website: https://www.vybecode.in/
+- Email: krishatra3@gmail.com
+- LinkedIn: https://www.linkedin.com/in/krish-batra/
 
