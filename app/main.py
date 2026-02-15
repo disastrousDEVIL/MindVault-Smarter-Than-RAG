@@ -72,17 +72,12 @@ async def query(req: QueryRequest):
 
 
 @app.get("/graph")
-async def graph(output_path: str | None = None, dataset_name: str | None = None):
+async def graph():
     """
     Render the current knowledge graph to an interactive HTML file.
     If no output_path is provided, Cognee writes to its default location.
     """
-    graph_path = await visualize_knowledge_graph(output_path, dataset_name)
-    if not graph_path:
-        return {
-            "status": "success",
-            "message": "Graph written to Cognee's default location (home directory).",
-        }
+    graph_path = await visualize_knowledge_graph()
 
     return FileResponse(
         path=str(graph_path),

@@ -31,4 +31,6 @@ dist/
 .DS_Store
 .idea/
 .vscode/
-
+.mplconfig/
+.python-version
+/output/

@@ -54,24 +54,17 @@ async def _ensure_graph_context(dataset_name: Optional[str]) -> None:
     await set_database_global_context_variables(target_dataset, user.id)
 
 
-async def visualize_knowledge_graph(
-    output_path: Optional[str] = None,
-    dataset_name: Optional[str] = None,
-) -> Optional[Path]:
+async def visualize_knowledge_graph() -> Optional[Path]:
     """
     Render the current Cognee knowledge graph to an interactive HTML file.
     Returns the path to the generated HTML file.
     """
-    await _ensure_graph_context(dataset_name)
+    await _ensure_graph_context(None)
+    target = Path.cwd() / "output" / "graph.html"
 
-    if output_path:
-        target = Path(output_path).expanduser()
-        target.parent.mkdir(parents=True, exist_ok=True)
-        await visualize_graph(str(target))
-        return target
-
-    await visualize_graph()
-    return None
+    target.parent.mkdir(parents=True, exist_ok=True)
+    await visualize_graph(str(target))
+    return target
 
 
 async def store_facts(facts: List[Dict]) -> None:
