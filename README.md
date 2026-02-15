@@ -1,4 +1,4 @@
-## MindVault 🧠
+# MindVault 🧠
 
 A backend service that converts documents into a knowledge graph so LLMs answer questions using only stored, traceable facts — no chat history, no vector-only retrieval, no hallucinations.
 
